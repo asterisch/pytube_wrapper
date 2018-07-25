@@ -19,7 +19,7 @@ def progress_function(chunk, file_handle, bytes_remaining):
 
 def main():
     if len(sys.argv) < 2:
-        print "Usage ./%s [Youtube URL]" % (sys.argv[0])
+        print "Usage %s [Youtube URL]" % (sys.argv[0])
         sys.exit(1)
     yt = YouTube(sys.argv[1])# on_progress_callback=progress_function)
     i=0

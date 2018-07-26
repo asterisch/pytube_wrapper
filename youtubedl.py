@@ -21,7 +21,7 @@ def main():
     if len(sys.argv) < 2:
         print "Usage %s [Youtube URL]" % (sys.argv[0])
         sys.exit(1)
-    yt = YouTube(sys.argv[1])# on_progress_callback=progress_function)
+    yt = YouTube(sys.argv[1])
     i=0
     quals={}
     for st in yt.streams.filter(subtype='mp4').all():

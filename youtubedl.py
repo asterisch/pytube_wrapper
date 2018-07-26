@@ -22,11 +22,18 @@ def main():
         print "Usage %s [Youtube URL]" % (sys.argv[0])
         sys.exit(1)
     yt = YouTube(sys.argv[1])
-    i=0
+    i=1
     quals={}
-    for st in yt.streams.filter(subtype='mp4').all():
+    for st in yt.streams.filter(type='video').filter(subtype='mp4').all():
         quals[i]=st
-        print "["+str(i)+"] "+str(st)
+        res = st.resolution
+        if not res:
+            res = st.res
+        if hasattr(st,'quality'):
+            qual = st.quality
+        if hasattr(st,'quality_label'):
+            qual = st.quality_label
+        print "["+str(i)+"] ["+str(res)+"] [ Quality: "+str(qual)+"]"
         i+=1
     ch = -1
     while ch not in quals.keys():

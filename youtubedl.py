@@ -24,6 +24,8 @@ def main():
     yt = YouTube(sys.argv[1])
     i=1
     quals={}
+    #TODO offer most common options maybe? e.g. only 720p,1080p,mp3,ogg
+    #TODO add convertion to mp3 (from best video quality)
     for st in yt.streams.filter(type='video').filter(subtype='mp4').all():
         quals[i]=st
         res = st.resolution
@@ -35,6 +37,7 @@ def main():
             qual = st.quality_label
         print "["+str(i)+"] ["+str(res)+"] [ Quality: "+str(qual)+"]"
         i+=1
+    #TODO Add auto and verbose mode (argparse, -q 720p , -v, -u url or just [url])
     ch = -1
     while ch not in quals.keys():
         try:
